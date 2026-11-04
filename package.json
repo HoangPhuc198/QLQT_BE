@@ -17,7 +17,7 @@
     "test:serialization": "npm run build && node --test scripts/serialization.test.cjs",
     "vercel-build": "npm run build:postgres",
     "typecheck": "tsc --noEmit --incremental false",
-    "postinstall": "prisma generate"
+    "postinstall": "npx prisma generate"
   },
   "keywords": [],
   "author": "",
