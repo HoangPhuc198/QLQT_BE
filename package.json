@@ -16,7 +16,8 @@
     "db:inspect": "node scripts/inspect-supabase.cjs",
     "test:serialization": "npm run build && node --test scripts/serialization.test.cjs",
     "vercel-build": "npm run build:postgres",
-    "typecheck": "tsc --noEmit --incremental false"
+    "typecheck": "tsc --noEmit --incremental false",
+    "postinstall": "prisma generate"
   },
   "keywords": [],
   "author": "",
