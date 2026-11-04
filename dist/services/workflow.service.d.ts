@@ -1,0 +1,36 @@
+export declare function getAvailableActions(currentStatus: string, userRole: string): string[];
+export declare function transitionState(eventId: string, action: string, userId: string, userRole: string, data?: {
+    comments?: string;
+    reason?: string;
+}): Promise<{
+    id: string;
+    createdAt: Date;
+    updatedAt: Date;
+    status: string;
+    title: string;
+    description: string | null;
+    objectives: string | null;
+    targetAudience: string | null;
+    expectedAttendees: number | null;
+    organizingUnit: string;
+    contactPerson: string | null;
+    contactEmail: string | null;
+    contactPhone: string | null;
+    startDate: Date | null;
+    endDate: Date | null;
+    setupTime: Date | null;
+    teardownTime: Date | null;
+    preferredVenue: string | null;
+    planContent: string | null;
+    safetyPlan: string | null;
+    communicationPlan: string | null;
+    eventCode: string;
+    permitStatus: string;
+    facilityStatus: string;
+    inspectionStatus: string;
+    settlementStatus: string;
+    reportStatus: string;
+    currentVersion: number;
+    createdById: string;
+    deletedAt: Date | null;
+}>;

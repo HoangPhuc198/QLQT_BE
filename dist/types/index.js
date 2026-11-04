@@ -1,0 +1,73 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.BookingStatus = exports.DecisionType = exports.ApprovalStage = exports.EventStatus = exports.UserRole = void 0;
+var UserRole;
+(function (UserRole) {
+    UserRole["ADMIN"] = "ADMIN";
+    UserRole["BTC"] = "BTC";
+    UserRole["BCN_KHOA"] = "BCN_KHOA";
+    UserRole["DOAN_TRUONG"] = "DOAN_TRUONG";
+    UserRole["CSVC"] = "CSVC";
+    UserRole["KHTC"] = "KHTC";
+})(UserRole || (exports.UserRole = UserRole = {}));
+var EventStatus;
+(function (EventStatus) {
+    EventStatus["DRAFT"] = "DRAFT";
+    EventStatus["SUBMITTED"] = "SUBMITTED";
+    EventStatus["FACULTY_REVIEW"] = "FACULTY_REVIEW";
+    EventStatus["FACULTY_REVISION_REQUESTED"] = "FACULTY_REVISION_REQUESTED";
+    EventStatus["FACULTY_REJECTED"] = "FACULTY_REJECTED";
+    EventStatus["FACULTY_APPROVED"] = "FACULTY_APPROVED";
+    EventStatus["UNIVERSITY_REVIEW"] = "UNIVERSITY_REVIEW";
+    EventStatus["UNIVERSITY_REVISION_REQUESTED"] = "UNIVERSITY_REVISION_REQUESTED";
+    EventStatus["UNIVERSITY_REJECTED"] = "UNIVERSITY_REJECTED";
+    EventStatus["UNIVERSITY_APPROVED"] = "UNIVERSITY_APPROVED";
+    EventStatus["PERMIT_ISSUED"] = "PERMIT_ISSUED";
+    EventStatus["BUDGET_REVIEW"] = "BUDGET_REVIEW";
+    EventStatus["BUDGET_REVISION_REQUESTED"] = "BUDGET_REVISION_REQUESTED";
+    EventStatus["BUDGET_REJECTED"] = "BUDGET_REJECTED";
+    EventStatus["FACILITY_REVIEW"] = "FACILITY_REVIEW";
+    EventStatus["FACILITY_CONFLICT"] = "FACILITY_CONFLICT";
+    EventStatus["FACILITY_REVISION_REQUESTED"] = "FACILITY_REVISION_REQUESTED";
+    EventStatus["FACILITY_RESERVED"] = "FACILITY_RESERVED";
+    EventStatus["READY_FOR_EVENT"] = "READY_FOR_EVENT";
+    EventStatus["FACILITY_HANDED_OVER"] = "FACILITY_HANDED_OVER";
+    EventStatus["EVENT_IN_PROGRESS"] = "EVENT_IN_PROGRESS";
+    EventStatus["FACILITY_RETURN_PENDING"] = "FACILITY_RETURN_PENDING";
+    EventStatus["FACILITY_INSPECTION"] = "FACILITY_INSPECTION";
+    EventStatus["FACILITY_INCIDENT"] = "FACILITY_INCIDENT";
+    EventStatus["FACILITY_ACCEPTED"] = "FACILITY_ACCEPTED";
+    EventStatus["REPORT_PENDING"] = "REPORT_PENDING";
+    EventStatus["FINANCE_DOCUMENTS_PENDING"] = "FINANCE_DOCUMENTS_PENDING";
+    EventStatus["FINANCE_REVIEW"] = "FINANCE_REVIEW";
+    EventStatus["FINANCE_REVISION_REQUESTED"] = "FINANCE_REVISION_REQUESTED";
+    EventStatus["FINANCE_APPROVAL_PENDING"] = "FINANCE_APPROVAL_PENDING";
+    EventStatus["PAYMENT_REJECTED"] = "PAYMENT_REJECTED";
+    EventStatus["SETTLED"] = "SETTLED";
+    EventStatus["COMPLETED"] = "COMPLETED";
+    EventStatus["CANCELLED"] = "CANCELLED";
+})(EventStatus || (exports.EventStatus = EventStatus = {}));
+var ApprovalStage;
+(function (ApprovalStage) {
+    ApprovalStage["FACULTY_REVIEW"] = "FACULTY_REVIEW";
+    ApprovalStage["UNIVERSITY_REVIEW"] = "UNIVERSITY_REVIEW";
+    ApprovalStage["BUDGET_REVIEW"] = "BUDGET_REVIEW";
+    ApprovalStage["FACILITY_REVIEW"] = "FACILITY_REVIEW";
+    ApprovalStage["FINANCE_REVIEW"] = "FINANCE_REVIEW";
+})(ApprovalStage || (exports.ApprovalStage = ApprovalStage = {}));
+var DecisionType;
+(function (DecisionType) {
+    DecisionType["APPROVED"] = "APPROVED";
+    DecisionType["REJECTED"] = "REJECTED";
+    DecisionType["REVISION_REQUESTED"] = "REVISION_REQUESTED";
+})(DecisionType || (exports.DecisionType = DecisionType = {}));
+var BookingStatus;
+(function (BookingStatus) {
+    BookingStatus["PENDING"] = "PENDING";
+    BookingStatus["TENTATIVE"] = "TENTATIVE";
+    BookingStatus["CONFIRMED"] = "CONFIRMED";
+    BookingStatus["REJECTED"] = "REJECTED";
+    BookingStatus["CANCELLED"] = "CANCELLED";
+    BookingStatus["RELEASED"] = "RELEASED";
+})(BookingStatus || (exports.BookingStatus = BookingStatus = {}));
+//# sourceMappingURL=index.js.map
