@@ -1,14 +1,12 @@
 generator client {
-  provider        = "prisma-client-js"
-  output          = "../generated/postgresql"
-  previewFeatures = ["multiSchema"]
+  provider      = "prisma-client-js"
+  output        = "../generated/postgresql"
+  binaryTargets = ["native", "debian-openssl-3.0.x"]
 }
 
 datasource db {
-  provider  = "postgresql"
-  url       = env("DATABASE_URL")
-  directUrl = env("DIRECT_URL")
-  schemas   = ["my_due"]
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
 }
 
 model User {
@@ -36,8 +34,6 @@ model User {
   incidentReports    IncidentReport[]
   settlementCreator  Settlement[]       @relation("SettlementCreator")
   settlementReviewer Settlement[]       @relation("SettlementReviewer")
-
-  @@schema("my_due")
 }
 
 model Event {
@@ -88,8 +84,6 @@ model Event {
   settlements       Settlement[]
   eventReport       EventReport?
   notifications     Notification[]
-
-  @@schema("my_due")
 }
 
 model EventVersion {
@@ -106,8 +100,6 @@ model EventVersion {
   changedBy   String?
   isActive    Boolean  @default(true)
   createdAt   DateTime @default(now())
-
-  @@schema("my_due")
 }
 
 model EventScheduleItem {
@@ -121,8 +113,6 @@ model EventScheduleItem {
   sortOrder   Int      @default(0)
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
-
-  @@schema("my_due")
 }
 
 model BudgetItem {
@@ -140,8 +130,6 @@ model BudgetItem {
   actualTotal    Float?
   createdAt      DateTime @default(now())
   updatedAt      DateTime @updatedAt
-
-  @@schema("my_due")
 }
 
 model ApprovalDecision {
@@ -156,8 +144,6 @@ model ApprovalDecision {
   decidedById String
   decidedBy   User     @relation(fields: [decidedById], references: [id])
   createdAt   DateTime @default(now())
-
-  @@schema("my_due")
 }
 
 model WorkflowHistory {
@@ -173,8 +159,6 @@ model WorkflowHistory {
   comments   String?
   metadata   String?
   createdAt  DateTime @default(now())
-
-  @@schema("my_due")
 }
 
 model Attachment {
@@ -190,8 +174,6 @@ model Attachment {
   uploadedById String
   uploadedBy   User     @relation(fields: [uploadedById], references: [id])
   createdAt    DateTime @default(now())
-
-  @@schema("my_due")
 }
 
 model Facility {
@@ -208,8 +190,6 @@ model Facility {
   updatedAt   DateTime @updatedAt
 
   resourceBookings ResourceBooking[]
-
-  @@schema("my_due")
 }
 
 model Equipment {
@@ -225,8 +205,6 @@ model Equipment {
   updatedAt     DateTime @updatedAt
 
   bookingItems ResourceBookingItem[]
-
-  @@schema("my_due")
 }
 
 model ResourceBooking {
@@ -250,8 +228,6 @@ model ResourceBooking {
   updatedAt         DateTime  @updatedAt
 
   bookingItems ResourceBookingItem[]
-
-  @@schema("my_due")
 }
 
 model ResourceBookingItem {
@@ -262,8 +238,6 @@ model ResourceBookingItem {
   equipment   Equipment       @relation(fields: [equipmentId], references: [id])
   quantity    Int             @default(1)
   createdAt   DateTime        @default(now())
-
-  @@schema("my_due")
 }
 
 model HandoverRecord {
@@ -283,8 +257,6 @@ model HandoverRecord {
   confirmedAt       DateTime?
   createdAt         DateTime  @default(now())
   updatedAt         DateTime  @updatedAt
-
-  @@schema("my_due")
 }
 
 model ReturnInspection {
@@ -300,8 +272,6 @@ model ReturnInspection {
   inspectedAt        DateTime @default(now())
   createdAt          DateTime @default(now())
   updatedAt          DateTime @updatedAt
-
-  @@schema("my_due")
 }
 
 model IncidentReport {
@@ -317,8 +287,6 @@ model IncidentReport {
   status       String   @default("OPEN")
   createdAt    DateTime @default(now())
   updatedAt    DateTime @updatedAt
-
-  @@schema("my_due")
 }
 
 model Settlement {
@@ -342,8 +310,6 @@ model Settlement {
 
   items     SettlementItem[]
   documents FinancialDocument[]
-
-  @@schema("my_due")
 }
 
 model SettlementItem {
@@ -357,8 +323,6 @@ model SettlementItem {
   difference     Float      @default(0)
   notes          String?
   createdAt      DateTime   @default(now())
-
-  @@schema("my_due")
 }
 
 model FinancialDocument {
@@ -374,8 +338,6 @@ model FinancialDocument {
   isVerified     Boolean    @default(false)
   verifiedAt     DateTime?
   createdAt      DateTime   @default(now())
-
-  @@schema("my_due")
 }
 
 model EventReport {
@@ -394,8 +356,6 @@ model EventReport {
   acceptedBy      String?
   createdAt       DateTime  @default(now())
   updatedAt       DateTime  @updatedAt
-
-  @@schema("my_due")
 }
 
 model Notification {
@@ -412,8 +372,6 @@ model Notification {
   readAt    DateTime?
   linkUrl   String?
   createdAt DateTime  @default(now())
-
-  @@schema("my_due")
 }
 
 model AuditLog {
@@ -428,8 +386,6 @@ model AuditLog {
   ipAddress  String?
   userAgent  String?
   createdAt  DateTime @default(now())
-
-  @@schema("my_due")
 }
 
 model SystemSetting {
@@ -439,8 +395,6 @@ model SystemSetting {
   description String?
   category    String?
   updatedAt   DateTime @updatedAt
-
-  @@schema("my_due")
 }
 
 model PasswordResetToken {
@@ -453,11 +407,8 @@ model PasswordResetToken {
   verified  Boolean  @default(false)
   used      Boolean  @default(false)
   createdAt DateTime @default(now())
-
-  @@schema("my_due")
 }
 
-// Explicit bridge only; never assume Username=email or convert UUID into bigint.
 model LegacyIdentityMap {
   entity        String
   legacyId      BigInt
@@ -466,5 +417,4 @@ model LegacyIdentityMap {
 
   @@id([entity, legacyId])
   @@unique([entity, applicationId])
-  @@schema("my_due")
 }
